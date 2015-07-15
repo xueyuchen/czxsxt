@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <link rel="stylesheet" type="text/css" href="../style/style.css"/>
+    <script type="text/javascript" src="../lib/jquery.js"></script>
+    <script type="text/javascript" src="../lib/underscore.js"></script>
+    <script type="text/javascript" src="../lib/backbone.js"></script>
+</head>
+<body>
+<div class="container">
+    <!--<div class="before-header">-->
+
+    <!--</div>-->
+    <header>
+        <div class="title-box">
+            <span>子杰汽车配件专卖</span>
+        </div>
+        <div class="search-box">
+            <div class="search">
+                <img src="../image/search.png">
+                <input type="text"/>
+                <button>搜索</button>
+            </div>
+
+        </div>
+        <div class="login-box">
+            <span>管理登陆</span>
+        </div>
+    </header>
+    <div class="advertising">
+        <div class="advertising-left"></div>
+        <div class="advertising-right"></div>
+    </div>
+    <div class="page-body">
+        <div class="search-condition">
+            <div class="search-model-img">
+                <div class="search-header">
+                    <span class="search-class-img">品牌</span>
+                </div>
+                <div class="arrow_left arrow_left_img">
+                    <a href="#"><img src="../image/arrow_left.png"></a>
+                </div>
+                <div class="search-info">
+                    <div class="brand-img">
+                        <a href="#">
+                            <img src="../image/aodi.jpg">
+                        </a>
+                    </div>
+                    <div class="brand-img">
+                        <a href="#">
+                            <img src="../image/baoma.jpg">
+                        </a>
+                    </div>
+                    <div class="brand-img">
+                        <a href="#">
+                            <img src="../image/baoshijie.jpg">
+                        </a>
+                    </div>
+                    <div class="brand-img">
+                        <a href="#">
+                            <img src="../image/benchi.jpg">
+                        </a>
+                    </div>
+                    <div class="brand-img">
+                        <a href="#">
+                            <img src="../image/dazong.jpg">
+                        </a>
+                    </div>
+                    <div class="brand-img">
+                        <a href="#">
+                            <img src="../image/kaidilake.jpg">
+                        </a>
+                    </div>
+                    <div class="brand-img">
+                        <a href="#"><img src="../image/luhu.jpg"></a>
+                    </div>
+                </div>
+                <div class="arrow_right arrow_right_img">
+                    <a href="#"><img src="../image/arrow_right.png"></a>
+                </div>
+            </div>
+            <div class="search-model">
+                <div class="search-header">
+                    <span class="search-class">车型</span>
+                </div>
+                <div class="arrow_left">
+                    <a href="#"><img src="../image/arrow_left.png"></a>
+                </div>
+                <div class="search-info">
+                    <ul>
+                        <li class="info-class"><a href="#">奥迪A4L</a></li>
+                        <li class="menuDiv"></li>
+                        <li class="info-class"><a href="#">奥迪A6L</a></li>
+                        <li class="menuDiv"></li>
+                        <li class="info-class"><a href="#">奥迪S5</a></li>
+                        <li class="menuDiv"></li>
+                        <li class="info-class"><a href="#">奥迪A1</a></li>
+                        <li class="menuDiv"></li>
+                        <li class="info-class"><a href="#">奥迪A4</a></li>
+                        <li class="menuDiv"></li>
+                        <li class="info-class"><a href="#">奥迪Q3</a></li>
+                        <li class="menuDiv"></li>
+                        <li class="info-class"><a href="#">奥迪Q3</a></li>
+                        <li class="menuDiv"></li>
+                        <li class="info-class"><a href="#">奥迪Q3</a></li>
+                    </ul>
+                </div>
+                <div class="arrow_right">
+                    <a href="#"><img src="../image/arrow_right.png"></a>
+                </div>
+            </div>
+            <div class="search-model">
+                <div class="search-header"><span class="search-class">款式</span></div>
+                <div class="arrow_left">
+                    <a href="#"><img src="../image/arrow_left.png"></a>
+                </div>
+                <div class="search-info">
+                    <ul>
+                        <li class="info-class"><a href="#">2011款</a></li>
+                        <li class="menuDiv"></li>
+                        <li class="info-class"><a href="#">203款</a></li>
+                        <li class="menuDiv"></li>
+                        <li class="info-class"><a href="#">2015款</a></li>
+                    </ul>
+                </div>
+                <div class="arrow_right">
+                    <a href="#"><img src="../image/arrow_right.png"></a>
+                </div>
+            </div>
+            <div class="search-model">
+                <div class="search-header"><span class="search-class">部件</span></div>
+                <div class="arrow_left">
+                    <a href="#"><img src="../image/arrow_left.png"></a>
+                </div>
+                <div class="search-info">
+                    <ul>
+                        <li class="info-class"><a href="#">左前大灯</a></li>
+                        <li class="menuDiv"></li>
+                        <li class="info-class"><a href="#">前保险杠</a></li>
+                        <li class="menuDiv"></li>
+                        <li class="info-class"><a href="#">左前叶子板</a></li>
+                        <li class="menuDiv"></li>
+                        <li class="info-class"><a href="#">左前大灯</a></li>
+                        <li class="menuDiv"></li>
+                        <li class="info-class"><a href="#">前保险杠</a></li>
+                        <li class="menuDiv"></li>
+                        <li class="info-class"><a href="#">左前叶子板</a></li>
+                    </ul>
+                </div>
+                <div class="arrow_right">
+                    <a href="#"><img src="../image/arrow_right.png"></a>
+                </div>
+            </div>
+        </div>
+        <div class="search-result">
+            <div class="result-title">
+                <span>搜索结果：</span>
+
+                <div class="level-assortment">
+                    <span>级别筛选</span>
+                    <span><a href="#">A级</a></span>
+                    <span><a href="#">B级</a></span>
+                    <span><a href="#">C级</a></span>
+                </div>
+            </div>
+            <div class="img-list">
+                <div class="part-detial">
+                    <img src="../image/part-img/100000.jpg">
+                    <span>奥迪A6L 2015款 右前叶子板</span><br>
+                    <span class="level-a">A级</span><br>
+                    <span>编号：</span>00000001
+                </div>
+                <div class="padding-detail"></div>
+                <div class="part-detial">
+                    <img src="../image/part-img/200000.jpg">
+                    <span>奥迪A6L 2015款 前保险杠</span><br>
+                    <span class="level-b">B级</span><br>
+                    <span>编号：</span>00000002
+                </div>
+                <div class="padding-detail"></div>
+                <div class="part-detial">
+                    <img src="../image/part-img/300000.jpg">
+                    <span>奥迪A6L 2015款 左前大灯</span><br>
+                    <span class="level-c">C级</span><br>
+                    <span>编号：</span>00000003
+                </div>
+                <div class="padding-detail"></div>
+                <div class="part-detial">
+                    <img src="../image/part-img/300000.jpg">
+                    <span>奥迪A6L 2015款 左前大灯</span><br>
+                    <span class="level-c">C级</span><br>
+                    <span>编号：</span>00000003
+                </div>
+                <div class="padding-detail"></div>
+                <div class="part-detial">
+                    <img src="../image/part-img/300000.jpg">
+                    <span>奥迪A6L 2015款 左前大灯</span><br>
+                    <span class="level-c">C级</span><br>
+                    <span>编号：</span>00000003
+                </div>
+                <div class="padding-detail"></div>
+                <div class="part-detial">
+                    <img src="../image/part-img/300000.jpg">
+                    <span>奥迪A6L 2015款 左前大灯</span><br>
+                    <span class="level-b">B级</span><br>
+                    <span>编号：</span>00000003
+                </div>
+                <div class="padding-detail"></div>
+                <div class="part-detial">
+                    <img src="../image/part-img/300000.jpg">
+                    <span>奥迪A6L 2015款 左前大灯</span><br>
+                    <span class="level-c">C级</span><br>
+                    <span>编号：</span>00000003
+                </div>
+                <div class="padding-detail"></div>
+                <div class="part-detial">
+                    <img src="../image/part-img/300000.jpg">
+                    <span>奥迪A6L 2015款 左前大灯</span><br>
+                    <span class="level-a">A级</span><br>
+                    <span>编号：</span>00000003
+                </div>
+                <div class="padding-detail"></div>
+                <div class="part-detial">
+                    <img src="../image/part-img/300000.jpg">
+                    <span>奥迪A6L 2015款 左前大灯</span><br>
+                    <span class="level-a">A级</span><br>
+                    <span>编号：</span>00000003
+                </div>
+                <div class="padding-detail"></div>
+                <div class="part-detial">
+                    <img src="../image/part-img/300000.jpg">
+                    <span>奥迪A6L 2015款 左前大灯</span><br>
+                    <span class="level-c">C级</span><br>
+                    <span>编号：</span>00000003
+                </div>
+                <div class="padding-detail"></div>
+                <div class="part-detial">
+                    <img src="../image/part-img/300000.jpg">
+                    <span>奥迪A6L 2015款 左前大灯</span><br>
+                    <span class="level-a">A级</span><br>
+                    <span>编号：</span>00000003
+                </div>
+                <div class="padding-detail"></div>
+                <div class="part-detial">
+                    <img src="../image/part-img/300000.jpg">
+                    <span>奥迪A6L 2015款 左前大灯</span><br>
+                    <span class="level-b">B级</span><br>
+                    <span>编号：</span>00000003
+                </div>
+                <div class="padding-detail"></div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>
