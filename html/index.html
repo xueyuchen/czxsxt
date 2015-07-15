@@ -4,9 +4,17 @@
     <meta charset="UTF-8">
     <title></title>
     <link rel="stylesheet" type="text/css" href="../style/style.css"/>
+    <link rel="stylesheet" type="text/css" href="../style/swiper.min.css"/>
     <script type="text/javascript" src="../lib/jquery.js"></script>
     <script type="text/javascript" src="../lib/underscore.js"></script>
     <script type="text/javascript" src="../lib/backbone.js"></script>
+    <script type="text/javascript" src="../lib/swiper.js"></script>
+    <script type="text/css">
+        .swiper-container {
+            width: 79%;
+            float: left;
+        }
+    </script>
 </head>
 <body>
 <div class="container">
@@ -39,45 +47,65 @@
                 <div class="search-header">
                     <span class="search-class-img">品牌</span>
                 </div>
-                <div class="arrow_left arrow_left_img">
+                <div class="arrow_left arrow_left_img left-brand">
                     <a href="#"><img src="../image/arrow_left.png"></a>
                 </div>
-                <div class="search-info">
-                    <div class="brand-img">
-                        <a href="#">
-                            <img src="../image/aodi.jpg">
-                        </a>
-                    </div>
-                    <div class="brand-img">
-                        <a href="#">
-                            <img src="../image/baoma.jpg">
-                        </a>
-                    </div>
-                    <div class="brand-img">
-                        <a href="#">
-                            <img src="../image/baoshijie.jpg">
-                        </a>
-                    </div>
-                    <div class="brand-img">
-                        <a href="#">
-                            <img src="../image/benchi.jpg">
-                        </a>
-                    </div>
-                    <div class="brand-img">
-                        <a href="#">
-                            <img src="../image/dazong.jpg">
-                        </a>
-                    </div>
-                    <div class="brand-img">
-                        <a href="#">
-                            <img src="../image/kaidilake.jpg">
-                        </a>
-                    </div>
-                    <div class="brand-img">
-                        <a href="#"><img src="../image/luhu.jpg"></a>
+                <div class="swiper-container" style="width: 80%; float: left; margin-left: 2%;">
+                    <div class="swiper-wrapper search-info">
+                        <div class="swiper-slide brand-img" style="width: 30px;">
+                            <a href="#">
+                                <img src="../image/aodi.jpg">
+                            </a>
+                        </div>
+                        <div class="swiper-slide brand-img" style="width: 30px;">
+                            <a href="#">
+                                <img src="../image/baoma.jpg">
+                            </a>
+                        </div>
+                        <div class="swiper-slide brand-img" style="width: 30px;">
+                            <a href="#">
+                                <img src="../image/baoshijie.jpg">
+                            </a>
+                        </div>
+                        <div class="swiper-slide brand-img" style="width: 30px;">
+                            <a href="#">
+                                <img src="../image/benchi.jpg">
+                            </a>
+                        </div>
+                        <div class="swiper-slide brand-img" style="width: 30px;">
+                            <a href="#">
+                                <img src="../image/dazong.jpg">
+                            </a>
+                        </div>
+                        <div class="swiper-slide brand-img" style="width: 30px;">
+                            <a href="#">
+                                <img src="../image/kaidilake.jpg">
+                            </a>
+                        </div>
+                        <div class="swiper-slide brand-img" style="width: 30px;">
+                            <a href="#"><img src="../image/luhu.jpg"></a>
+                        </div>
+                        <div class="swiper-slide brand-img" style="width: 30px;">
+                            <a href="#"><img src="../image/luhu.jpg"></a>
+                        </div>
+                        <div class="swiper-slide brand-img" style="width: 30px;">
+                            <a href="#"><img src="../image/luhu.jpg"></a>
+                        </div>
+                        <div class="swiper-slide brand-img" style="width: 30px;">
+                            <a href="#"><img src="../image/luhu.jpg"></a>
+                        </div>
+                        <div class="swiper-slide brand-img" style="width: 30px;">
+                            <a href="#"><img src="../image/luhu.jpg"></a>
+                        </div>
+                        <div class="swiper-slide brand-img" style="width: 30px;">
+                            <a href="#"><img src="../image/luhu.jpg"></a>
+                        </div>
+                        <div class="swiper-slide brand-img" style="width: 30px;">
+                            <a href="#"><img src="../image/luhu.jpg"></a>
+                        </div>
                     </div>
                 </div>
-                <div class="arrow_right arrow_right_img">
+                <div class="arrow_right arrow_right_img right-brand">
                     <a href="#"><img src="../image/arrow_right.png"></a>
                 </div>
             </div>
@@ -85,71 +113,101 @@
                 <div class="search-header">
                     <span class="search-class">车型</span>
                 </div>
-                <div class="arrow_left">
+                <div class="arrow_left left-model">
                     <a href="#"><img src="../image/arrow_left.png"></a>
                 </div>
-                <div class="search-info">
-                    <ul>
-                        <li class="info-class"><a href="#">奥迪A4L</a></li>
-                        <li class="menuDiv"></li>
-                        <li class="info-class"><a href="#">奥迪A6L</a></li>
-                        <li class="menuDiv"></li>
-                        <li class="info-class"><a href="#">奥迪S5</a></li>
-                        <li class="menuDiv"></li>
-                        <li class="info-class"><a href="#">奥迪A1</a></li>
-                        <li class="menuDiv"></li>
-                        <li class="info-class"><a href="#">奥迪A4</a></li>
-                        <li class="menuDiv"></li>
-                        <li class="info-class"><a href="#">奥迪Q3</a></li>
-                        <li class="menuDiv"></li>
-                        <li class="info-class"><a href="#">奥迪Q3</a></li>
-                        <li class="menuDiv"></li>
-                        <li class="info-class"><a href="#">奥迪Q3</a></li>
-                    </ul>
+                <div class="swiper-container-model"
+                     style="float: left;overflow: hidden;width: 80%;margin-top: 0.5%; margin-left: 2%;">
+                    <div class="swiper-wrapper">
+                        <span class="swiper-slide"><a href="#">奥迪A4L</a></span>
+                        <span class="swiper-slide"><a href="#">奥迪A6L</a></span>
+                        <span class="swiper-slide"><a href="#">奥迪S5</a></span>
+                        <span class="swiper-slide"><a href="#">奥迪A1</a></span>
+                        <span class="swiper-slide"><a href="#">奥迪A4</a></span>
+                        <span class="swiper-slide"><a href="#">奥迪Q3</a></span>
+                        <span class="swiper-slide"><a href="#">奥迪A4L</a></span>
+                        <span class="swiper-slide"><a href="#">奥迪A6L</a></span>
+                        <span class="swiper-slide"><a href="#">奥迪S5</a></span>
+                        <span class="swiper-slide"><a href="#">奥迪A1</a></span>
+                        <!--<ul>-->
+                        <!--<li class="info-class"><a href="#">奥迪A4L</a></li>-->
+                        <!--<li class="menuDiv"></li>-->
+                        <!--<li class="info-class"><a href="#">奥迪A6L</a></li>-->
+                        <!--<li class="menuDiv"></li>-->
+                        <!--<li class="info-class"><a href="#">奥迪S5</a></li>-->
+                        <!--<li class="menuDiv"></li>-->
+                        <!--<li class="info-class"><a href="#">奥迪A1</a></li>-->
+                        <!--<li class="menuDiv"></li>-->
+                        <!--<li class="info-class"><a href="#">奥迪A4</a></li>-->
+                        <!--<li class="menuDiv"></li>-->
+                        <!--<li class="info-class"><a href="#">奥迪Q3</a></li>-->
+                        <!--<li class="menuDiv"></li>-->
+                        <!--<li class="info-class"><a href="#">奥迪Q3</a></li>-->
+                        <!--<li class="menuDiv"></li>-->
+                        <!--<li class="info-class"><a href="#">奥迪Q3</a></li>-->
+                        <!--</ul>-->
+                    </div>
                 </div>
-                <div class="arrow_right">
+                <div class="arrow_right right-model">
                     <a href="#"><img src="../image/arrow_right.png"></a>
                 </div>
             </div>
             <div class="search-model">
                 <div class="search-header"><span class="search-class">款式</span></div>
-                <div class="arrow_left">
+                <div class="arrow_left left-style">
                     <a href="#"><img src="../image/arrow_left.png"></a>
                 </div>
-                <div class="search-info">
-                    <ul>
-                        <li class="info-class"><a href="#">2011款</a></li>
-                        <li class="menuDiv"></li>
-                        <li class="info-class"><a href="#">203款</a></li>
-                        <li class="menuDiv"></li>
-                        <li class="info-class"><a href="#">2015款</a></li>
-                    </ul>
+                <div class="swiper-container-style"
+                     style="float: left;overflow: hidden;width: 80%;margin-top: 0.5%; margin-left: 2%;">
+                    <div class="swiper-wrapper">
+                        <span class="swiper-slide"><a href="#">2011款</a></span>
+                        <span class="swiper-slide"><a href="#">2013款</a></span>
+                        <span class="swiper-slide"><a href="#">2015款</a></span>
+                        <!--<ul>-->
+                        <!--<li class="info-class"><a href="#">2011款</a></li>-->
+                        <!--<li class="menuDiv"></li>-->
+                        <!--<li class="info-class"><a href="#">203款</a></li>-->
+                        <!--<li class="menuDiv"></li>-->
+                        <!--<li class="info-class"><a href="#">2015款</a></li>-->
+                        <!--</ul>-->
+                    </div>
                 </div>
-                <div class="arrow_right">
+                <div class="arrow_right right-style">
                     <a href="#"><img src="../image/arrow_right.png"></a>
                 </div>
             </div>
             <div class="search-model">
                 <div class="search-header"><span class="search-class">部件</span></div>
-                <div class="arrow_left">
+                <div class="arrow_left left-part">
                     <a href="#"><img src="../image/arrow_left.png"></a>
                 </div>
-                <div class="search-info">
-                    <ul>
-                        <li class="info-class"><a href="#">左前大灯</a></li>
-                        <li class="menuDiv"></li>
-                        <li class="info-class"><a href="#">前保险杠</a></li>
-                        <li class="menuDiv"></li>
-                        <li class="info-class"><a href="#">左前叶子板</a></li>
-                        <li class="menuDiv"></li>
-                        <li class="info-class"><a href="#">左前大灯</a></li>
-                        <li class="menuDiv"></li>
-                        <li class="info-class"><a href="#">前保险杠</a></li>
-                        <li class="menuDiv"></li>
-                        <li class="info-class"><a href="#">左前叶子板</a></li>
-                    </ul>
+                <div class="swiper-container-part"
+                     style="float: left;overflow: hidden;width: 80%;margin-top: 0.5%; margin-left: 2%;">
+                    <div class="swiper-wrapper">
+                        <span class="swiper-slide"><a href="#">左前大灯</a></span>
+                        <span class="swiper-slide"><a href="#">前保险杠</a></span>
+                        <span class="swiper-slide"><a href="#">左前叶子板</a></span>
+                        <span class="swiper-slide"><a href="#">左前大灯</a></span>
+                        <span class="swiper-slide"><a href="#">前保险杠</a></span>
+                        <span class="swiper-slide"><a href="#">左前大灯</a></span>
+                        <span class="swiper-slide"><a href="#">左前叶子板</a></span>
+                        <span class="swiper-slide"><a href="#">左前大灯</a></span>
+                        <span class="swiper-slide"><a href="#">左前大灯</a></span>
+                        <span class="swiper-slide"><a href="#">左前大灯</a></span>
+                        <span class="swiper-slide"><a href="#">左前大灯</a></span>
+                        <span class="swiper-slide"><a href="#">左前大灯</a></span>
+                        <!--<ul>-->
+                        <!--<li class="info-class"><a href="#">左前大灯</a></li>-->
+                        <!--<li class="info-class"><a href="#">前保险杠</a></li>-->
+                        <!--<li class="info-class"><a href="#">左前叶子板</a></li>-->
+                        <!--<li class="info-class"><a href="#">左前大灯</a></li>-->
+                        <!--<li class="info-class"><a href="#">前保险杠</a></li>-->
+                        <!--<li class="info-class"><a href="#">左前叶子板</a></li>-->
+                        <!--<li class="info-class"><a href="#">左前叶子板</a></li>-->
+                        <!--</ul>-->
+                    </div>
                 </div>
-                <div class="arrow_right">
+                <div class="arrow_right right-part">
                     <a href="#"><img src="../image/arrow_right.png"></a>
                 </div>
             </div>
@@ -255,4 +313,37 @@
     </div>
 </div>
 </body>
+<script>
+    var swiper = new Swiper('.swiper-container', {
+        slidesPerView: 8,
+        spaceBetween: 30,
+        freeMode: true,
+        prevButton: '.left-brand',
+        nextButton: '.right-brand'
+    });
+    var swiperPart = new Swiper('.swiper-container-part', {
+        slidesPerView: 8,
+        spaceBetween: 30,
+        freeMode: true,
+        setWrapperSize: true,
+        prevButton: '.left-part',
+        nextButton: '.right-part'
+    });
+    var swiperModel = new Swiper('.swiper-container-model', {
+        slidesPerView: 8,
+        spaceBetween: 30,
+        freeMode: true,
+        setWrapperSize: true,
+        prevButton: '.left-model',
+        nextButton: '.right-model'
+    });
+    var swiperStyle = new Swiper('.swiper-container-style', {
+        slidesPerView: 8,
+        spaceBetween: 30,
+        freeMode: true,
+        setWrapperSize: true,
+        prevButton: '.left-style',
+        nextButton: '.right-style'
+    });
+</script>
 </html>
