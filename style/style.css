@@ -315,6 +315,7 @@ header {
     width: 18%;
     height: 200px;
     background-color: #F5F5F5;
+    margin-right: 2%;
 }
 
 .padding-detail {
@@ -384,4 +385,9 @@ header {
 
 .img-list {
     margin-top: 10px;
+}
+
+.onCheck {
+    background-color: gold;
+    border: double
 }
