@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <link rel="stylesheet" type="text/css" href="style/style-admin.css"/>
+    <link rel="stylesheet" type="text/css" href="style/swiper.min.css"/>
+    <script type="text/javascript" src="lib/jquery.js"></script>
+    <script type="text/javascript" src="lib/underscore.js"></script>
+    <script type="text/javascript" src="lib/backbone.js"></script>
+    <script type="text/javascript" src="lib/swiper.js"></script>
+    <script type="text/javascript">
+        var cookieName = document.cookie.split(';');
+        var isLogin = false;
+        for (var i = 0; i < cookieName.length; i++) {
+            var loginStatus = cookieName[i].split('=')[1];
+            if ($.trim(cookieName[i].split('=')[0]) == 'czpjlr-am' && loginStatus) {
+                isLogin = true;
+                $.ajaxSetup({
+                    headers: {
+                        'X-APP-KEY': loginStatus
+                    }
+                });
+            }
+        }
+        if(!isLogin){
+            window.location.href = 'index.html'
+        }
+    </script>
+</head>
+<body>
+<div class="container">
+    <header>
+    </header>
+    <div class="advertising">
+        <div class="advertising-left"></div>
+        <div class="advertising-right"></div>
+    </div>
+    <div style="height: 30px"></div>
+    <div class="page-body" id="imgForm-list">
+        <script type="text/template" id="imgFromTemplate">
+            <div class="textForm">
+                <div class="text">
+                    <input type="file" name="img" class="inputImg" id="a"/>
+                </div>
+                <img style="display: none"/>
+            </div>
+            <div class="selects">
+                <select name="brandId" class="brand">
+                    <option></option>
+                </select>
+                <select name="modelId" class="model">
+                    <option></option>
+                </select>
+                <select name="styleId" class="style">
+                    <option></option>
+                </select>
+                <select name="partId" class="part">
+                    <option></option>
+                </select>
+                <select name="level">
+                    <option></option>
+                    <option value="1">A级</option>
+                    <option value="2">B级</option>
+                    <option value="3">C级</option>
+                </select>
+            </div>
+            <br>
+            <input type="button" value="删除" id="delete"/>
+            <input type="button" value="上传" id="send"/>
+        </script>
+        <div class="imgForm" id="insertForm">
+            <button>添加项目</button>
+            <span class="totalNum"></span>
+        </div>
+        <!--<div class="imgForm">-->
+        <!--<div class="textForm">-->
+        <!--<input type="file" name="img" class="inputImg"/>-->
+        <!--<select>-->
+        <!--<option>奥迪</option>-->
+        <!--<option>奔驰</option>-->
+        <!--<option>宝马</option>-->
+        <!--</select>-->
+        <!--<select>-->
+        <!--<option>A6L</option>-->
+        <!--<option>A4L</option>-->
+        <!--<option>Q5</option>-->
+        <!--</select>-->
+        <!--<select>-->
+        <!--<option>2013款</option>-->
+        <!--<option>2014款</option>-->
+        <!--<option>2015款</option>-->
+        <!--</select>-->
+        <!--</div>-->
+        <!--</div>-->
+    </div>
+</div>
+</body>
+<script type="text/javascript" src="script/constants.js"></script>
+<script type="text/javascript" src="script/model/accessory.js"></script>
+<script type="text/javascript" src="script/admin/imgFormView.js"></script>
+<script type="text/javascript">
+    $(document).ready(function() {
+        var totalImg = 0;
+        $('.imgForm button').on('click', function() {
+            var imgFormView = new ImgFormView();
+            totalImg = Number($('#insertForm span').html()) + 1;
+            $('#insertForm span').html(totalImg);
+        });
+    });
+</script>
+</html>

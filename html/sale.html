@@ -3,12 +3,32 @@
 <head lang="en">
     <meta charset="UTF-8">
     <title></title>
-    <link rel="stylesheet" type="text/css" href="style/style.css"/>
+    <link rel="stylesheet" type="text/css" href="style/style-sale.css"/>
     <link rel="stylesheet" type="text/css" href="style/swiper.min.css"/>
     <script type="text/javascript" src="lib/jquery.js"></script>
     <script type="text/javascript" src="lib/underscore.js"></script>
     <script type="text/javascript" src="lib/backbone.js"></script>
     <script type="text/javascript" src="lib/swiper.js"></script>
+    <script type="text/javascript">
+        console.log(document.cookie);
+        var cookieName = document.cookie.split(';');
+        var isLogin = false;
+        var loginStatus = null;
+        for (var i in cookieName) {
+            if ($.trim(cookieName[i].split('=')[0]) == 'czpjlr-su' && cookieName[i].split('=')[1]) {
+                isLogin = true;
+                loginStatus = cookieName[i].split('=')[1];
+                $.ajaxSetup({
+                    headers: {
+                        'X-APP-KEY': loginStatus
+                    }
+                });
+            }
+        }
+        if (!isLogin) {
+            window.location.href = 'index.html'
+        }
+    </script>
 </head>
 <body>
 <div class="container">
@@ -17,18 +37,16 @@
     <!--</div>-->
     <header>
         <div class="title-box">
-            <span>子杰汽车配件专卖</span>
         </div>
         <div class="search-box">
             <div class="search">
                 <img src="image/search.png">
-                <input id="searchPar" type="text" placeholder="奥迪 A6L 2014 左大灯(查询条件请以空格分开)"/>
-                <button id="searchAccessory">搜索</button>
+                <input type="text" placeholder="输入配件编号进行查询"/>
+                <button>搜索</button>
             </div>
 
         </div>
         <div class="login-box">
-            <span id="login">管理登陆</span>
         </div>
     </header>
     <div class="advertising">
@@ -181,8 +199,21 @@
                     <span id="reset"><img src="image/reset.png" style="width: 23px;"/></span>
                 </div>
             </div>
+            <div class="result-title">
+                <span></span>
+
+                <div class="level-assortment">
+                    <span>级别筛选</span>
+                    <span id="no-sale"><a href="#">已出售</a></span>
+                    <span id="saled"><a href="#">未出售</a></span>
+                    <span id="reset-sale"><img src="image/reset.png" style="width: 23px;"/></span>
+                </div>
+            </div>
             <div class="img-list" id="accessory-list">
                 <script type="text/template" id="accessoryTemplate">
+                    <% if(saleDt != null) { %>
+                    <div class="saled"></div>
+                    <% } %>
                     <img src="<%=accessoryImg%>">
                     <span><%=accessoryName%></span><br>
                     <%if (level == 1) {%>
@@ -194,86 +225,21 @@
                     <%if (level == 3) {%>
                     <span class="level-c">C级</span><br>
                     <% } %>
-                    <span>编号：</span><%=accessoryNum%>
+                    <span>编号：</span><%=accessoryNum%><br>
+                    <% if(saleMoney != null) { %>
+                    <span>售价：</span><%=saleMoney%>￥<br>
+                    <% }else{ %>
+                    <span style="float: left">售价：</span><input type="text"
+                                                               style="display: block; width: 50%; float: left;"/>
+                    <button class="enter">登记</button>
+                    <% } %>
                 </script>
-                <!--<div class="part-detial">-->
-                    <!--<img src="../image/part-img/100000.jpg">-->
-                    <!--<span>奥迪A6L 2015款 右前叶子板</span><br>-->
-                    <!--<span class="level-a">A级</span><br>-->
-                    <!--<span>编号：</span>00000001-->
-                <!--</div>-->
-                <!--<div class="part-detial">-->
-                    <!--<img src="../image/part-img/200000.jpg">-->
-                    <!--<span>奥迪A6L 2015款 前保险杠</span><br>-->
-                    <!--<span class="level-b">B级</span><br>-->
-                    <!--<span>编号：</span>00000002-->
-                <!--</div>-->
-                <!--<div class="part-detial">-->
-                    <!--<img src="../image/part-img/300000.jpg">-->
-                    <!--<span>奥迪A6L 2015款 左前大灯</span><br>-->
-                    <!--<span class="level-c">C级</span><br>-->
-                    <!--<span>编号：</span>00000003-->
-                <!--</div>-->
-                <!--<div class="part-detial">-->
-                    <!--<img src="../image/part-img/300000.jpg">-->
-                    <!--<span>奥迪A6L 2015款 左前大灯</span><br>-->
-                    <!--<span class="level-c">C级</span><br>-->
-                    <!--<span>编号：</span>00000003-->
-                <!--</div>-->
-                <!--<div class="part-detial">-->
-                    <!--<img src="../image/part-img/300000.jpg">-->
-                    <!--<span>奥迪A6L 2015款 左前大灯</span><br>-->
-                    <!--<span class="level-c">C级</span><br>-->
-                    <!--<span>编号：</span>00000003-->
-                <!--</div>-->
-                <!--<div class="part-detial">-->
-                    <!--<img src="../image/part-img/300000.jpg">-->
-                    <!--<span>奥迪A6L 2015款 左前大灯</span><br>-->
-                    <!--<span class="level-b">B级</span><br>-->
-                    <!--<span>编号：</span>00000003-->
-                <!--</div>-->
-                <!--<div class="part-detial">-->
-                    <!--<img src="../image/part-img/300000.jpg">-->
-                    <!--<span>奥迪A6L 2015款 左前大灯</span><br>-->
-                    <!--<span class="level-c">C级</span><br>-->
-                    <!--<span>编号：</span>00000003-->
-                <!--</div>-->
-                <!--<div class="part-detial">-->
-                    <!--<img src="../image/part-img/300000.jpg">-->
-                    <!--<span>奥迪A6L 2015款 左前大灯</span><br>-->
-                    <!--<span class="level-a">A级</span><br>-->
-                    <!--<span>编号：</span>00000003-->
-                <!--</div>-->
-                <!--<div class="part-detial">-->
-                    <!--<img src="../image/part-img/300000.jpg">-->
-                    <!--<span>奥迪A6L 2015款 左前大灯</span><br>-->
-                    <!--<span class="level-a">A级</span><br>-->
-                    <!--<span>编号：</span>00000003-->
-                <!--</div>-->
-                <!--<div class="part-detial">-->
-                    <!--<img src="../image/part-img/300000.jpg">-->
-                    <!--<span>奥迪A6L 2015款 左前大灯</span><br>-->
-                    <!--<span class="level-c">C级</span><br>-->
-                    <!--<span>编号：</span>00000003-->
-                <!--</div>-->
-                <!--<div class="part-detial">-->
-                    <!--<img src="../image/part-img/300000.jpg">-->
-                    <!--<span>奥迪A6L 2015款 左前大灯</span><br>-->
-                    <!--<span class="level-a">A级</span><br>-->
-                    <!--<span>编号：</span>00000003-->
-                <!--</div>-->
-                <!--<div class="part-detial">-->
-                    <!--<img src="../image/part-img/300000.jpg">-->
-                    <!--<span>奥迪A6L 2015款 左前大灯</span><br>-->
-                    <!--<span class="level-b">B级</span><br>-->
-                    <!--<span>编号：</span>00000003-->
-                <!--</div>-->
             </div>
         </div>
     </div>
 </div>
 </body>
-<script type="text/javascript" src="script/constants.js"></script>
+<script type="text/javascript" src="script/constants-sale.js"></script>
 <script type="text/javascript" src="script/model/brand.js"></script>
 <script type="text/javascript" src="script/model/model.js"></script>
 <script type="text/javascript" src="script/model/modelStyle.js"></script>
@@ -318,7 +284,7 @@
         $('.level-b').parent().show();
         $('.level-c').parent().show();
     });
-    $('#login').on('click', function(){
+    $('#login').on('click', function() {
         window.location.href = 'login.html';
     });
 </script>

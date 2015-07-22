@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <script type="text/javascript" src="lib/jquery.js"></script>
+    <script type="text/javascript" src="lib/swfupload_widget.js"></script>
+</head>
+<body>
+<form method="post" enctype="multipart/form-data">
+    <input type="file" name="image" id="img" onchange="sendImg(this.id);"/>
+    <input type="text" name="model"/>
+    <input type="submit" value="提交"/>
+</form>
+<img/>
+</body>
+<script type="text/javascript" src="script/admin/imgFormView.js"></script>
+<script type="text/javascript" src="script/constants.js"></script>
+<script type="text/javascript">
+    $('form').attr('action', constants.accessories);
+    function getBase64Image(img) {
+        var canvas = document.createElement("canvas");
+        canvas.width = img.width;
+        canvas.height = img.height;
+
+        var ctx = canvas.getContext("2d");
+        ctx.drawImage(img, 0, 0, img.width, img.height);
+
+        var dataURL = canvas.toDataURL("image/png");
+        return dataURL;
+
+        // return dataURL.replace("data:image/png;base64,", "");
+    }
+
+
+    function main() {
+        var img = document.createElement('img');
+        img.src = '../image/aodi.jpg';
+        img.onload = function() {
+            var data = getBase64Image(img);
+            console.log(data);
+        };
+        document.body.appendChild(img);
+    }
+
+    main()
+</script>
+</html>

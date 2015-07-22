@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <link rel="stylesheet" type="text/css" href="style/style-admin.css"/>
+    <script type="text/javascript" src="lib/jquery.js"></script>
+    <script type="text/javascript" src="lib/underscore.js"></script>
+    <script type="text/javascript" src="lib/backbone.js"></script>
+    <script type="text/javascript" src="script/constants.js"></script>
+</head>
+<body>
+<div class="container">
+    <header>
+    </header>
+    <div class="advertising">
+        <div class="advertising-left"></div>
+        <div class="advertising-right"></div>
+    </div>
+    <div style="height: 30px"></div>
+    <div class="page-body" id="imgForm-list">
+        用户名：<input type="text" name="username" id="username"/>
+        密码：<input type="password" name="password" id="password"/>
+        <button value="登录">登录</button>
+    </div>
+</div>
+</body>
+<script type="text/javascript">
+    $('button').on('click', function() {
+        var username = $('#username').val();
+        var password = $('#password').val();
+        $.ajax({
+            url: constants.login,
+            type: 'post',
+            data: {
+                username: username,
+                password: password
+            },
+            success: function(data) {
+                document.cookie = null;
+                console.log(document.cookie);
+                alert(data);
+                if (data == 'AM') {
+                    var d = new Date();
+//                    d.setHours(d.getHours() + 1); //保存一个月
+                    document.cookie = "czpjlr-am=you have logined AM";
+                    console.log(document.cookie);
+                    window.location.href = 'admin.html';
+                } else if (data == 'SU') {
+                    document.cookie = "czpjlr-su=you have logined SU";
+                    console.log(document.cookie);
+                    window.location.href = 'sale.html';
+                } else {
+                    window.location.href = 'index.html';
+                }
+            },
+            error: function() {
+                window.location.href = 'index.html';
+            }
+        });
+    });
+</script>
+</html>
