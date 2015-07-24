@@ -4,8 +4,8 @@
 var constants = {};
 constants.api = {};
 
-constants.api.base = 'http:' + '//' + 'localhost:7992' + '/api';
-//constants.api.base = 'http:' + '//' + '115.28.209.203:80' + '/api';
+//constants.api.base = 'http:' + '//' + 'localhost:7992' + '/api';
+constants.api.base = 'http:' + '//' + '115.28.209.203:80' + '/api';
 
 constants.brands = constants.api.base + '/brands';
 constants.models = constants.api.base + '/models';

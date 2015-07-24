@@ -20,9 +20,9 @@ var BrandView = Backbone.View.extend({
         this.router.partCollectionView.clearPartSelect();
         var brandId = this.model.get('brandId');
         var brandName = this.model.get('brandName');
-        this.router.searchParam.brandId = brandName;
+        this.router.searchParam.brandId = brandId;
         this.router.modelCollectionView.refashData(brandId);
-        this.router.accessoryCollectionView.refashData(brandName);
+        this.router.accessoryCollectionView.refashData(brandId);
         $('#model-list').css('transform', 'translate3d(0px, 0px, 0px)');
         $('#model-list').css('-webkit-transform', 'translate3d(0px, 0px, 0px)')
     }

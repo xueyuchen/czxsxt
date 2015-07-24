@@ -18,7 +18,7 @@ var PartView = Backbone.View.extend({
     changePart: function(e){
         $('#part-list a').removeClass('onCheck');
         this.$('a').toggleClass('onCheck');
-        this.router.searchParam.partId = this.model.get('partName');
+        this.router.searchParam.partId = this.model.get('partId');
         this.router.accessoryCollectionView.searchAccessory(this.router.searchParam);
     }
 });
