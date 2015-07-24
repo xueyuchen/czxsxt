@@ -4,44 +4,49 @@
 var AccessoryCollectionView = Backbone.View.extend({
     el: '#accessory-list',
     initialize: function(option) {
+
         var view = this;
         this.router = option.router;
         this.collection = new AccessoryCollection();
-        this.listenTo(this.collection, 'all', this.render);
-        this.collection.fetch({
-            url: constants.accessories
+        //this.listenTo(this.collection, 'all', this.render);
+        this.collection.getFirstPage({
+            url: constants.accessories,
+            success: function(){
+                view.render();
+            }
         });
-        $('#searchAccessory').on('click', function(){
+        $('#searchPar').on('change', function() {
             var parStr = $('#searchPar').val();
-            var parArray = parStr.split(' ');
-            var searchStr = '';
-            if(parArray[0]){
-                searchStr = searchStr + '?brandName=' + parArray[0];
-            }
-            if(parArray[1]){
-                searchStr = searchStr + '&modelName=' + parArray[1];
-            }
-            if(parArray[2]){
-                searchStr = searchStr + '&styleName=' + parArray[2];
-            }
-            if(parArray[3]){
-                searchStr = searchStr + '&partName=' + parArray[3];
-            }
             view.collection = new AccessoryCollection();
             view.collection.fetch({
-                url: constants.accessoriesSearch + searchStr,
+                url: constants.accessoriesSearch + '?key=' + parStr,
                 success: function() {
+                    $('#accessory-list').empty();
                     view.render();
                 }
             });
         });
     },
     render: function() {
-        this.$el.empty();
+        console.log('1: ' + this.collection.hasNextPage());
         var view = this;
+        console.log('2: ' + view.collection.hasNextPage());
         this.collection.each(function(item) {
             view.renderAccessory(item);
         }, this);
+        console.log('3: ' + view.collection.hasNextPage());
+        $(window).on('scroll', function(){
+            if(document.body.scrollTop + document.body.scrollHeight > window.screen.height){
+                console.log(view.collection.hasNextPage());
+                if(view.collection.hasNextPage()){
+                    view.collection.getNextPage({
+                        success: function(){
+                            view.render();
+                        }
+                    });
+                }
+            }
+        });
     },
     renderAccessory: function(item) {
         var view = this;
@@ -54,29 +59,31 @@ var AccessoryCollectionView = Backbone.View.extend({
     searchAccessory: function(option) {
         var view = this;
         this.collection = new AccessoryCollection();
-        var urlStr = '?brandId=1';
+        var urlStr = '';
         if (option.modelId) {
-            urlStr = urlStr + '&modelId=' + option.modelId;
+            urlStr = urlStr + option.modelId + ' ';
         }
         if (option.styleId) {
-            urlStr = urlStr + '&styleId=' + option.styleId;
+            urlStr = urlStr + option.styleId + ' ';
         }
         if (option.partId) {
-            urlStr = urlStr + '&partId=' + option.partId;
+            urlStr = urlStr + option.partId + ' ';
         }
         this.collection.fetch({
-            url: constants.accessories + urlStr,
+            url: constants.accessoriesSearch + '?key=' + urlStr,
             success: function() {
+                $('#accessory-list').empty();
                 view.render();
             }
         });
     },
-    refashData: function(brandId) {
+    refashData: function(brandName) {
         var view = this;
         this.collection = new AccessoryCollection();
         this.collection.fetch({
-            url: constants.accessories + '/' + brandId,
-            success: function() {
+            url: constants.accessoriesSearch + '?key=' + brandName,
+            success: function(data) {
+                view.$el.empty();
                 view.render();
             }
         });

@@ -18,7 +18,7 @@ var ModelStyleView = Backbone.View.extend({
     changeStyle: function(){
         $('#modelStyle-list a').removeClass('onCheck');
         this.$('a').toggleClass('onCheck');
-        this.router.searchParam.styleId = this.model.get('styleId');
+        this.router.searchParam.styleId = this.model.get('styleName');
         $('#part-list a').removeClass('onCheck');
         this.router.searchParam.partId = null;
         this.router.accessoryCollectionView.searchAccessory(this.router.searchParam);
