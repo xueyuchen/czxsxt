@@ -3,46 +3,137 @@
 <head lang="en">
     <meta charset="UTF-8">
     <title></title>
+    <link rel="stylesheet" type="text/css" href="style/style.css"/>
+    <link rel="stylesheet" type="text/css" href="style/swiper.min.css"/>
     <script type="text/javascript" src="lib/jquery.js"></script>
-    <script type="text/javascript" src="lib/swfupload_widget.js"></script>
+    <script type="text/javascript" src="lib/underscore.js"></script>
+    <script type="text/javascript" src="lib/backbone.js"></script>
+    <script type="text/javascript" src="lib/backbone.paginator.js"></script>
+    <script type="text/javascript" src="lib/swiper.js"></script>
 </head>
 <body>
-<form method="post" enctype="multipart/form-data">
-    <input type="file" name="image" id="img" onchange="sendImg(this.id);"/>
-    <input type="text" name="model"/>
-    <input type="submit" value="提交"/>
-</form>
-<img/>
+<div class="container">
+    <!--<div class="before-header">-->
+
+    <!--</div>-->
+    <header>
+        <div class="title-box">
+            <span>子杰汽车配件专卖</span>
+        </div>
+        <div class="search-box">
+            <div class="search">
+                <img src="image/search.png">
+                <input id="searchPar" type="text" placeholder="奥迪 A6L 2014 左大灯(查询条件请以空格分开)"/>
+                <button id="searchAccessory">搜索</button>
+            </div>
+
+        </div>
+        <div class="login-box">
+        </div>
+    </header>
+    <div class="advertising">
+        <div class="advertising-left">
+            <div><a href="#">入库查询</a></div>
+            <div><a href="#">配件信息修改</a></div>
+            <div><a href="#">入库查询</a></div>
+            <div><a href="#">入库查询</a></div>
+        </div>
+        <div class="advertising-right"></div>
+    </div>
+    <div class="page-body">
+
+        <div class="search-result">
+            <div class="result-title">
+                <input type="date"/>
+            </div>
+            <div class="img-list" id="accessory-list">
+                <img style="display: block; width: 500px; float: left; margin-left: 15%;"
+                     src="image/part-img/100000.jpg"/>
+
+                <div style="  float: left; margin-left: 100px; margin-top: 10%;">
+                    <table style="  font-size: 20px;">
+                        <tr>
+                            <td>配件名称：</td>
+                            <td><&=&></td>
+                        </tr>
+                        <tr>
+                            <td>库房：</td>
+                            <td><select>
+                                <option>A库房</option>
+                                <option>B库房</option>
+                                <option>销售库房</option>
+                            </select></td>
+                        </tr>
+                        <tr>
+                            <td>
+                                维修状态：
+                            </td>
+                            <td>
+                                <select>
+                                    <option>未维修</option>
+                                    <option>维修中</option>
+                                    <option>已维修</option>
+                                </select>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><input type="button" value="提交修改"/></td>
+                            <td><input type="button" value="返回"></td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 </body>
-<script type="text/javascript" src="script/admin/imgFormView.js"></script>
 <script type="text/javascript" src="script/constants.js"></script>
-<script type="text/javascript">
-    $('form').attr('action', constants.accessories);
-    function getBase64Image(img) {
-        var canvas = document.createElement("canvas");
-        canvas.width = img.width;
-        canvas.height = img.height;
-
-        var ctx = canvas.getContext("2d");
-        ctx.drawImage(img, 0, 0, img.width, img.height);
-
-        var dataURL = canvas.toDataURL("image/png");
-        return dataURL;
-
-        // return dataURL.replace("data:image/png;base64,", "");
-    }
-
-
-    function main() {
-        var img = document.createElement('img');
-        img.src = '../image/aodi.jpg';
-        img.onload = function() {
-            var data = getBase64Image(img);
-            console.log(data);
-        };
-        document.body.appendChild(img);
-    }
-
-    main()
+<script type="text/javascript" src="script/model/brand.js"></script>
+<script type="text/javascript" src="script/model/model.js"></script>
+<script type="text/javascript" src="script/model/modelStyle.js"></script>
+<script type="text/javascript" src="script/model/part.js"></script>
+<script type="text/javascript" src="script/model/accessory.js"></script>
+<script type="text/javascript" src="script/collection/brandCollection.js"></script>
+<script type="text/javascript" src="script/collection/modelCollection.js"></script>
+<script type="text/javascript" src="script/collection/modelStyleCollection.js"></script>
+<script type="text/javascript" src="script/collection/partCollection.js"></script>
+<script type="text/javascript" src="script/collection/accessoryCollection.js"></script>
+<script type="text/javascript" src="script/view/brand/brandView.js"></script>
+<script type="text/javascript" src="script/view/model/modelView.js"></script>
+<script type="text/javascript" src="script/view/part/partView.js"></script>
+<script type="text/javascript" src="script/view/accessory/accessoryView.js"></script>
+<script type="text/javascript" src="script/view/modelStyle/modelStyleView.js"></script>
+<script type="text/javascript" src="script/view/brand/brandCollectionView.js"></script>
+<script type="text/javascript" src="script/view/model/modelCollectionView.js"></script>
+<script type="text/javascript" src="script/view/modelStyle/modelStyleCollectionView.js"></script>
+<script type="text/javascript" src="script/view/part/partCollectionView.js"></script>
+<script type="text/javascript" src="script/view/accessory/accessoryCollectionView.js"></script>
+<script type="text/javascript" src="script/router.js"></script>
+<script>
+    var router = new Router();
+    Backbone.history.start();
+    $('#level-a').on('click', function() {
+        $('.level-a').parent().show();
+        $('.level-b').parent().hide();
+        $('.level-c').parent().hide();
+    });
+    $('#level-b').on('click', function() {
+        $('.level-b').parent().show();
+        $('.level-a').parent().hide();
+        $('.level-c').parent().hide();
+    });
+    $('#level-c').on('click', function() {
+        $('.level-c').parent().show();
+        $('.level-b').parent().hide();
+        $('.level-a').parent().hide();
+    });
+    $('#reset').on('click', function() {
+        $('.level-a').parent().show();
+        $('.level-b').parent().show();
+        $('.level-c').parent().show();
+    });
+    $('#login').on('click', function() {
+        window.location.href = 'login.html';
+    });
 </script>
 </html>

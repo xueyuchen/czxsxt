@@ -184,7 +184,7 @@
             </div>
             <div class="img-list" id="accessory-list">
                 <script type="text/template" id="accessoryTemplate">
-                    <img src="<%=accessoryImg%>">
+                    <img src="data:image/jpeg;base64,<%=accessoryImg%>">
                     <span><%=accessoryName%></span><br>
                     <%if (level == 1) {%>
                     <span class="level-a">A级</span><br>
@@ -320,7 +320,7 @@
         $('.level-c').parent().show();
     });
     $('#login').on('click', function(){
-        window.location.href = 'login.html';
+        window.location.href = 'http://115.28.209.203/admin/admin/tologin';
     });
 </script>
 </html>

@@ -20,10 +20,10 @@ var ModelView = Backbone.View.extend({
         this.$('a').toggleClass('onCheck');
         var i = this.model.get('modelId');
         this.router.modelStyleCollectionView.refashData(i);
-        this.router.searchParam.modelId = this.model.get('modelId');
-        this.router.searchParam.styleId = null;
+        this.router.searchParam.modelName = this.model.get('modelName');
+        this.router.searchParam.styleName = null;
         $('#part-list a').removeClass('onCheck');
-        this.router.searchParam.partId = null;
+        this.router.searchParam.partName = null;
         this.router.accessoryCollectionView.searchAccessory(this.router.searchParam);
     }
 });

@@ -400,3 +400,19 @@ header {
     background-color: #F5F5F5;
     margin-right: 2%;
 }
+
+.advertising-left div {
+    border: double;
+    height: 40px;
+    background-color: #F5F5F5;
+}
+
+.advertising-left a {
+    margin-top: 10px;
+    display: block;
+}
+
+.result-title input {
+    display: block;
+    margin-top: 30px;
+}

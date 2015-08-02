@@ -45,11 +45,12 @@
 //                    d.setHours(d.getHours() + 1); //保存一个月
                     document.cookie = "czpjlr-am=you have logined AM";
                     console.log(document.cookie);
-                    window.location.href = 'admin.html';
+                    window.location.href = 'admin-new.html';
                 } else if (data == 'SU') {
                     document.cookie = "czpjlr-su=you have logined SU";
                     console.log(document.cookie);
-                    window.location.href = 'sale.html';
+                    alert(window.location.href);
+                    window.location.href = 'http://localhost:8080/diet-web-admin/admin/admin';
                 } else {
                     window.location.href = 'index.html';
                 }

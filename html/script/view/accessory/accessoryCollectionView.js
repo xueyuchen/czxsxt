@@ -9,9 +9,9 @@ var AccessoryCollectionView = Backbone.View.extend({
         this.collection = new AccessoryCollection();
         //this.listenTo(this.collection, 'all', this.render);
         this.collection.getFirstPage({
-            url: constants.accessories,
+            url: constants.accessoriesSearch + '?key=奥迪',
             success: function() {
-                view.render();
+                view.renderByLucene();
             }
         });
         $('#searchPar').on('input', function() {
@@ -19,6 +19,7 @@ var AccessoryCollectionView = Backbone.View.extend({
             console.log(parStr);
             if (parStr) {
                 view.collection = new AccessoryCollection();
+                view.collection.key = parStr;
                 view.collection.getFirstPage({
                     url: constants.accessoriesSearch + '?key=' + parStr,
                     success: function() {
@@ -67,6 +68,7 @@ var AccessoryCollectionView = Backbone.View.extend({
     renderByLucene: function() {
         console.log('1: ' + this.collection.hasNextPage());
         var view = this;
+        view.callbacked = true;
         console.log('2: ' + view.collection.hasNextPage());
         this.collection.each(function(item) {
             view.renderAccessory(item);
@@ -74,15 +76,23 @@ var AccessoryCollectionView = Backbone.View.extend({
         console.log('3: ' + view.collection.hasNextPage());
         $(window).off('scroll');
         $(window).on('scroll', function() {
-            if (document.body.scrollTop + document.body.scrollHeight > window.screen.height) {
+            console.log(document.body.scrollTop);
+            console.log(document.body.scrollHeight);
+            console.log(window.screen.height);
+            console.log('--------------');
+            if (document.body.scrollTop + window.screen.height > document.body.scrollHeight) {
                 console.log(view.collection.hasNextPage());
                 if (view.collection.hasNextPage()) {
-                    view.collection.getNextPage({
-                        url: constants.accessoriesSearch + '?key=' + $('#searchPar').val(),
-                        success: function() {
-                            view.render();
-                        }
-                    });
+                    if(view.callbacked) {
+                        view.callbacked = false;
+                        view.collection.getNextPage({
+                            url: constants.accessoriesSearch + '?key=' + view.collection.key,
+                            success: function() {
+                                view.renderByLucene();
+                                view.callbacked = true;
+                            }
+                        });
+                    }
                 }
             }
         });
@@ -99,32 +109,34 @@ var AccessoryCollectionView = Backbone.View.extend({
         var view = this;
         this.collection = new AccessoryCollection();
         var urlStr = '';
-        if (option.modelId) {
-            urlStr = urlStr + '&modelId=' + option.modelId;
+        if (option.modelName) {
+            urlStr = urlStr + option.modelName + ' ';
         }
-        if (option.styleId) {
-            urlStr = urlStr + '&styleId=' + option.styleId;
+        if (option.styleName) {
+            urlStr = urlStr + option.styleName + ' ';
         }
-        if (option.partId) {
-            urlStr = urlStr + '&partId=' + option.partId;
+        if (option.partName) {
+            urlStr = urlStr + option.partName + ' ';
         }
-        var url = constants.accessories + '?brandId=1' + urlStr;
+        var url = constants.accessoriesSearch + '?key=' + urlStr;
+        this.collection.key = urlStr;
         this.collection.getFirstPage({
-            url: constants.accessories + '?brandId=1' + urlStr,
+            url: url,
             success: function() {
                 $('#accessory-list').empty();
-                view.render(url);
+                view.renderByLucene();
             }
         });
     },
-    refashData: function(brandId) {
+    refashData: function(brandName) {
         var view = this;
         this.collection = new AccessoryCollection();
+        this.collection.key = brandName;
         this.collection.getFirstPage({
-            url: constants.accessories + '/' + brandId,
+            url: constants.accessoriesSearch + '?key=' + brandName,
             success: function(data) {
                 view.$el.empty();
-                view.render();
+                view.renderByLucene();
             }
         });
     }

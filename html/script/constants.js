@@ -14,3 +14,4 @@ constants.parts = constants.api.base + '/parts';
 constants.accessories = constants.api.base + '/accessories';
 constants.login = constants.api.base + '/admin';
 constants.accessoriesSearch = constants.api.base + '/accessories/lucene';
+constants.imgsUpload = constants.api.base + '/accessories/upload';
