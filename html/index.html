@@ -3,276 +3,226 @@
 <head lang="en">
     <meta charset="UTF-8">
     <title></title>
-    <link rel="stylesheet" type="text/css" href="style/style.css"/>
+    <!--<link rel="stylesheet" type="text/css" href="style/style.css"/>-->
     <link rel="stylesheet" type="text/css" href="style/swiper.min.css"/>
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.css"/>
+    <link rel="stylesheet" type="text/css" href="css/bootstrap-theme.css"/>
+    <link rel="stylesheet" type="text/css" href="style/my.css"/>
+    <link rel="stylesheet" type="text/css" href="style/my2.css"/>
     <script type="text/javascript" src="lib/jquery.js"></script>
     <script type="text/javascript" src="lib/underscore.js"></script>
     <script type="text/javascript" src="lib/backbone.js"></script>
     <script type="text/javascript" src="lib/backbone.paginator.js"></script>
     <script type="text/javascript" src="lib/swiper.js"></script>
+    <script type="text/javascript" src="js/bootstrap.js"></script>
 </head>
 <body>
-<div class="container">
-    <!--<div class="before-header">-->
+<nav class="navbar navbar-inverse navbar-fixed-top">
+    <a class="navbar-brand">XXX汽车配件查询</a>
 
-    <!--</div>-->
-    <header>
-        <div class="title-box">
-            <span>子杰汽车配件专卖</span>
-        </div>
-        <div class="search-box">
-            <div class="search">
-                <img src="image/search.png">
-                <input id="searchPar" type="text" placeholder="奥迪 A6L 2014 左大灯(查询条件请以空格分开)"/>
-                <button id="searchAccessory">搜索</button>
-            </div>
+    <form class="navbar-form navbar-right">
+        <a class="btn btn-primary" href="http://115.28.209.203/admin/admin/tologin">
+            管理登陆
+        </a>
+    </form>
+</nav>
+<div class="jumbotron" style="height: 280px;margin-bottom: 0px">
+    <div class="container">
+        <h3>查询您需要的配件，然后就可以联系我们了</h3>
+        <a tabindex="0" class="btn btn-default" role="button" data-toggle="popover" data-trigger="focus" title="使用流程"
+           style="float: right" data-placement="left"
+           data-content="查询你需要的配件，记录配件编码，通过微信或手机联系我们">
+            <span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span>
+        </a>
+        <h5><span class="label label-primary">联系电话：</span><span>13*********</span></h5>
+        <h5><span class="label label-primary">微信：</span><span>a*****</span></h5>
+        <br>
 
+        <div class="input-group input-group-lg">
+            <input type="text" class="form-control" placeholder="奥迪 A6L 2014 左大灯(查询条件请以空格分开)" id="searchPar">
+            <span class="input-group-btn">
+                <button class="btn btn-default" type="button">查询</button>
+            </span>
         </div>
-        <div class="login-box">
-            <span id="login">管理登陆</span>
+        <div class="alert" role="alert" id="alert"
+             style="background-color: white;width: 280px;margin: 0 auto;display: none">
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span
+                    aria-hidden="true">&times;</span></button>
+            <strong>正在查询，请稍后···</strong><img src="image/loading2.gif">
         </div>
-    </header>
-    <div class="advertising">
-        <div class="advertising-left"></div>
-        <div class="advertising-right"></div>
+        <!--<div class="alert alert-success" role="alert">查找中···</div>-->
     </div>
-    <div class="page-body">
-        <div class="search-condition">
-            <div class="search-model-img">
-                <div class="search-header">
-                    <span class="search-class-img">品牌</span>
-                </div>
-                <div class="arrow_left arrow_left_img left-brand">
-                    <a href="#"><img src="image/arrow_left.png"></a>
-                </div>
-                <div class="swiper-container" style="width: 80%; float: left; margin-left: 2%;">
-                    <div class="swiper-wrapper search-info" id="brand-list">
-                        <script type="text/template" id="brandTemplate">
-                            <a>
-                                <img src="<%=barndImg%>">
-                            </a>
-                        </script>
-                    </div>
-                </div>
-                <div class="arrow_right arrow_right_img right-brand">
-                    <a href="#"><img src="image/arrow_right.png"></a>
-                </div>
-            </div>
-            <div class="search-model">
-                <div class="search-header">
-                    <span class="search-class">车型</span>
-                </div>
-                <div class="arrow_left left-model">
-                    <a href="#"><img src="image/arrow_left.png"></a>
-                </div>
-                <div class="swiper-container-model"
-                     style="float: left;overflow: hidden;width: 80%;margin-top: 0.5%; margin-left: 2%;">
-                    <div class="swiper-wrapper" id="model-list">
-                        <script type="text/template" id="modelTemplate">
-                            <a href="#" name="model"><%=modelName%></a>
-                        </script>
-                        <!--<span class="swiper-slide"><a href="#">奥迪A4L</a></span>-->
-                        <!--<span class="swiper-slide"><a href="#">奥迪A6L</a></span>-->
-                        <!--<span class="swiper-slide"><a href="#">奥迪S5</a></span>-->
-                        <!--<span class="swiper-slide"><a href="#">奥迪A1</a></span>-->
-                        <!--<span class="swiper-slide"><a href="#">奥迪A4</a></span>-->
-                        <!--<span class="swiper-slide"><a href="#">奥迪Q3</a></span>-->
-                        <!--<span class="swiper-slide"><a href="#">奥迪A4L</a></span>-->
-                        <!--<span class="swiper-slide"><a href="#">奥迪A6L</a></span>-->
-                        <!--<span class="swiper-slide"><a href="#">奥迪S5</a></span>-->
-                        <!--<span class="swiper-slide"><a href="#">奥迪A1</a></span>-->
-                        <!--<ul>-->
-                        <!--<li class="info-class"><a href="#">奥迪A4L</a></li>-->
-                        <!--<li class="menuDiv"></li>-->
-                        <!--<li class="info-class"><a href="#">奥迪A6L</a></li>-->
-                        <!--<li class="menuDiv"></li>-->
-                        <!--<li class="info-class"><a href="#">奥迪S5</a></li>-->
-                        <!--<li class="menuDiv"></li>-->
-                        <!--<li class="info-class"><a href="#">奥迪A1</a></li>-->
-                        <!--<li class="menuDiv"></li>-->
-                        <!--<li class="info-class"><a href="#">奥迪A4</a></li>-->
-                        <!--<li class="menuDiv"></li>-->
-                        <!--<li class="info-class"><a href="#">奥迪Q3</a></li>-->
-                        <!--<li class="menuDiv"></li>-->
-                        <!--<li class="info-class"><a href="#">奥迪Q3</a></li>-->
-                        <!--<li class="menuDiv"></li>-->
-                        <!--<li class="info-class"><a href="#">奥迪Q3</a></li>-->
-                        <!--</ul>-->
-                    </div>
-                </div>
-                <div class="arrow_right right-model">
-                    <a href="#"><img src="image/arrow_right.png"></a>
-                </div>
-            </div>
-            <div class="search-model">
-                <div class="search-header"><span class="search-class">款式</span></div>
-                <div class="arrow_left left-style">
-                    <a href="#"><img src="image/arrow_left.png"></a>
-                </div>
-                <div class="swiper-container-style"
-                     style="float: left;overflow: hidden;width: 80%;margin-top: 0.5%; margin-left: 2%;">
-                    <div class="swiper-wrapper" id="modelStyle-list">
-                        <script type="text/template" id="modelStyleTemplate">
-                            <a href="#" name="style"><%=styleName%></a>
-                        </script>
-                        <!--<span class="swiper-slide"><a href="#">2011款</a></span>-->
-                        <!--<span class="swiper-slide"><a href="#">2013款</a></span>-->
-                        <!--<span class="swiper-slide"><a href="#">2015款</a></span>-->
-                        <!--<ul>-->
-                        <!--<li class="info-class"><a href="#">2011款</a></li>-->
-                        <!--<li class="menuDiv"></li>-->
-                        <!--<li class="info-class"><a href="#">203款</a></li>-->
-                        <!--<li class="menuDiv"></li>-->
-                        <!--<li class="info-class"><a href="#">2015款</a></li>-->
-                        <!--</ul>-->
-                    </div>
-                </div>
-                <div class="arrow_right right-style">
-                    <a href="#"><img src="image/arrow_right.png"></a>
-                </div>
-            </div>
-            <div class="search-model">
-                <div class="search-header"><span class="search-class">部件</span></div>
-                <div class="arrow_left left-part">
-                    <a href="#"><img src="image/arrow_left.png"></a>
-                </div>
-                <div class="swiper-container-part"
-                     style="float: left;overflow: hidden;width: 80%;margin-top: 0.5%; margin-left: 2%;">
-                    <div class="swiper-wrapper" id="part-list">
-                        <script type="text/template" id="partTemplate">
-                            <a href="#" name="part"><%=partName%></a>
-                        </script>
-                        <!--<span class="swiper-slide"><a href="#">左前大灯</a></span>-->
-                        <!--<span class="swiper-slide"><a href="#">前保险杠</a></span>-->
-                        <!--<span class="swiper-slide"><a href="#">左前叶子板</a></span>-->
-                        <!--<span class="swiper-slide"><a href="#">左前大灯</a></span>-->
-                        <!--<span class="swiper-slide"><a href="#">前保险杠</a></span>-->
-                        <!--<span class="swiper-slide"><a href="#">左前大灯</a></span>-->
-                        <!--<span class="swiper-slide"><a href="#">左前叶子板</a></span>-->
-                        <!--<span class="swiper-slide"><a href="#">左前大灯</a></span>-->
-                        <!--<span class="swiper-slide"><a href="#">左前大灯</a></span>-->
-                        <!--<span class="swiper-slide"><a href="#">左前大灯</a></span>-->
-                        <!--<span class="swiper-slide"><a href="#">左前大灯</a></span>-->
-                        <!--<span class="swiper-slide"><a href="#">左前大灯</a></span>-->
-                        <!--<ul>-->
-                        <!--<li class="info-class"><a href="#">左前大灯</a></li>-->
-                        <!--<li class="info-class"><a href="#">前保险杠</a></li>-->
-                        <!--<li class="info-class"><a href="#">左前叶子板</a></li>-->
-                        <!--<li class="info-class"><a href="#">左前大灯</a></li>-->
-                        <!--<li class="info-class"><a href="#">前保险杠</a></li>-->
-                        <!--<li class="info-class"><a href="#">左前叶子板</a></li>-->
-                        <!--<li class="info-class"><a href="#">左前叶子板</a></li>-->
-                        <!--</ul>-->
-                    </div>
-                </div>
-                <div class="arrow_right right-part">
-                    <a href="#"><img src="image/arrow_right.png"></a>
-                </div>
-            </div>
-        </div>
-        <div class="search-result">
-            <div class="result-title">
-                <span>搜索结果：</span>
+</div>
+<div class="panel panel-primary">
+    <div class="panel-heading">
+        <h3 class="panel-title">配件信息</h3>
+    </div>
+    <div class="panel-body">
+        <div id="sales-tiles" class="bs-example bs-example-tabs">
+            <section class="container-full-width">
+                <div class="tab-content container-fluid no-pad">
+                    <div class="tab-pane active showing-extra-row" id="todays-sales">
+                        <div class="row tiles" id="accessory-list">
+                            <script type="text/template" id="accessoryTemplate">
+                                <a href="javascript:void(0);">
+                                    <div class="tile-inner">
+                                        <img src="data:image/jpeg;base64,<%=accessoryImg%>" style="height: 205px"
+                                             class="img-responsive dpr-aware"/>
+                                        <footer class="sale-tile-detail">
+                                            <div class="sale-tile-detail-inner clearfix">
+                                                <h4 class="tenor">配件名称：<%=accessoryName%></h4>
 
-                <div class="level-assortment">
-                    <span>级别筛选</span>
-                    <span id="level-a"><a href="#">A级</a></span>
-                    <span id="level-b"><a href="#">B级</a></span>
-                    <span id="level-c"><a href="#">C级</a></span>
-                    <span id="reset"><img src="image/reset.png" style="width: 23px;"/></span>
+                                                <div class="clearfix">
+                                                    <h2>编号：<%=accessoryNum%></h2>
+                                                </div>
+                                            </div>
+                                        </footer>
+                                    </div>
+                                </a>
+                            </script>
+                        </div>
+                    </div>
                 </div>
-            </div>
-            <div class="img-list" id="accessory-list">
-                <script type="text/template" id="accessoryTemplate">
-                    <img src="data:image/jpeg;base64,<%=accessoryImg%>">
-                    <span><%=accessoryName%></span><br>
-                    <%if (level == 1) {%>
-                    <span class="level-a">A级</span><br>
-                    <% } %>
-                    <%if (level == 2) {%>
-                    <span class="level-b">B级</span><br>
-                    <% } %>
-                    <%if (level == 3) {%>
-                    <span class="level-c">C级</span><br>
-                    <% } %>
-                    <span>编号：</span><%=accessoryNum%>
-                </script>
-                <!--<div class="part-detial">-->
-                    <!--<img src="../image/part-img/100000.jpg">-->
-                    <!--<span>奥迪A6L 2015款 右前叶子板</span><br>-->
-                    <!--<span class="level-a">A级</span><br>-->
-                    <!--<span>编号：</span>00000001-->
-                <!--</div>-->
-                <!--<div class="part-detial">-->
-                    <!--<img src="../image/part-img/200000.jpg">-->
-                    <!--<span>奥迪A6L 2015款 前保险杠</span><br>-->
-                    <!--<span class="level-b">B级</span><br>-->
-                    <!--<span>编号：</span>00000002-->
-                <!--</div>-->
-                <!--<div class="part-detial">-->
-                    <!--<img src="../image/part-img/300000.jpg">-->
-                    <!--<span>奥迪A6L 2015款 左前大灯</span><br>-->
-                    <!--<span class="level-c">C级</span><br>-->
-                    <!--<span>编号：</span>00000003-->
-                <!--</div>-->
-                <!--<div class="part-detial">-->
-                    <!--<img src="../image/part-img/300000.jpg">-->
-                    <!--<span>奥迪A6L 2015款 左前大灯</span><br>-->
-                    <!--<span class="level-c">C级</span><br>-->
-                    <!--<span>编号：</span>00000003-->
-                <!--</div>-->
-                <!--<div class="part-detial">-->
-                    <!--<img src="../image/part-img/300000.jpg">-->
-                    <!--<span>奥迪A6L 2015款 左前大灯</span><br>-->
-                    <!--<span class="level-c">C级</span><br>-->
-                    <!--<span>编号：</span>00000003-->
-                <!--</div>-->
-                <!--<div class="part-detial">-->
-                    <!--<img src="../image/part-img/300000.jpg">-->
-                    <!--<span>奥迪A6L 2015款 左前大灯</span><br>-->
-                    <!--<span class="level-b">B级</span><br>-->
-                    <!--<span>编号：</span>00000003-->
-                <!--</div>-->
-                <!--<div class="part-detial">-->
-                    <!--<img src="../image/part-img/300000.jpg">-->
-                    <!--<span>奥迪A6L 2015款 左前大灯</span><br>-->
-                    <!--<span class="level-c">C级</span><br>-->
-                    <!--<span>编号：</span>00000003-->
-                <!--</div>-->
-                <!--<div class="part-detial">-->
-                    <!--<img src="../image/part-img/300000.jpg">-->
-                    <!--<span>奥迪A6L 2015款 左前大灯</span><br>-->
-                    <!--<span class="level-a">A级</span><br>-->
-                    <!--<span>编号：</span>00000003-->
-                <!--</div>-->
-                <!--<div class="part-detial">-->
-                    <!--<img src="../image/part-img/300000.jpg">-->
-                    <!--<span>奥迪A6L 2015款 左前大灯</span><br>-->
-                    <!--<span class="level-a">A级</span><br>-->
-                    <!--<span>编号：</span>00000003-->
-                <!--</div>-->
-                <!--<div class="part-detial">-->
-                    <!--<img src="../image/part-img/300000.jpg">-->
-                    <!--<span>奥迪A6L 2015款 左前大灯</span><br>-->
-                    <!--<span class="level-c">C级</span><br>-->
-                    <!--<span>编号：</span>00000003-->
-                <!--</div>-->
-                <!--<div class="part-detial">-->
-                    <!--<img src="../image/part-img/300000.jpg">-->
-                    <!--<span>奥迪A6L 2015款 左前大灯</span><br>-->
-                    <!--<span class="level-a">A级</span><br>-->
-                    <!--<span>编号：</span>00000003-->
-                <!--</div>-->
-                <!--<div class="part-detial">-->
-                    <!--<img src="../image/part-img/300000.jpg">-->
-                    <!--<span>奥迪A6L 2015款 左前大灯</span><br>-->
-                    <!--<span class="level-b">B级</span><br>-->
-                    <!--<span>编号：</span>00000003-->
-                <!--</div>-->
-            </div>
+            </section>
         </div>
     </div>
 </div>
+<nav class="navbar-default navbar-fixed-bottom">
+    <div class="container">
+        @copyright
+    </div>
+</nav>
+<!--<div class="container">-->
+<!--&lt;!&ndash;<div class="before-header">&ndash;&gt;-->
+
+<!--&lt;!&ndash;</div>&ndash;&gt;-->
+<!--<header>-->
+<!--<div class="title-box">-->
+<!--<span>子杰汽车配件专卖</span>-->
+<!--</div>-->
+<!--<div class="search-box">-->
+<!--<div class="search">-->
+<!--<img src="image/search.png">-->
+<!--<input id="searchPar" type="text" placeholder="奥迪 A6L 2014 左大灯(查询条件请以空格分开)"/>-->
+<!--<button id="searchAccessory">搜索</button>-->
+<!--</div>-->
+
+<!--</div>-->
+<!--<div class="login-box">-->
+<!--<span id="login">管理登陆</span>-->
+<!--</div>-->
+<!--</header>-->
+<!--<div class="advertising">-->
+<!--<div class="advertising-left"></div>-->
+<!--<div class="advertising-right"></div>-->
+<!--</div>-->
+<!--<div class="page-body">-->
+<!--<div class="search-condition">-->
+<!--<div class="search-model-img">-->
+<!--<div class="search-header">-->
+<!--<span class="search-class-img">品牌</span>-->
+<!--</div>-->
+<!--<div class="arrow_left arrow_left_img left-brand">-->
+<!--<a href="#"><img src="image/arrow_left.png"></a>-->
+<!--</div>-->
+<!--<div class="swiper-container" style="width: 80%; float: left; margin-left: 2%;">-->
+<!--<div class="swiper-wrapper search-info" id="brand-list">-->
+<!--<script type="text/template" id="brandTemplate">-->
+<!--<a>-->
+<!--<img src="<%=barndImg%>">-->
+<!--</a>-->
+<!--</script>-->
+<!--</div>-->
+<!--</div>-->
+<!--<div class="arrow_right arrow_right_img right-brand">-->
+<!--<a href="#"><img src="image/arrow_right.png"></a>-->
+<!--</div>-->
+<!--</div>-->
+<!--<div class="search-model">-->
+<!--<div class="search-header">-->
+<!--<span class="search-class">车型</span>-->
+<!--</div>-->
+<!--<div class="arrow_left left-model">-->
+<!--<a href="#"><img src="image/arrow_left.png"></a>-->
+<!--</div>-->
+<!--<div class="swiper-container-model"-->
+<!--style="float: left;overflow: hidden;width: 80%;margin-top: 0.5%; margin-left: 2%;">-->
+<!--<div class="swiper-wrapper" id="model-list">-->
+<!--<script type="text/template" id="modelTemplate">-->
+<!--<a href="#" name="model"><%=modelName%></a>-->
+<!--</script>-->
+<!--</div>-->
+<!--</div>-->
+<!--<div class="arrow_right right-model">-->
+<!--<a href="#"><img src="image/arrow_right.png"></a>-->
+<!--</div>-->
+<!--</div>-->
+<!--<div class="search-model">-->
+<!--<div class="search-header"><span class="search-class">款式</span></div>-->
+<!--<div class="arrow_left left-style">-->
+<!--<a href="#"><img src="image/arrow_left.png"></a>-->
+<!--</div>-->
+<!--<div class="swiper-container-style"-->
+<!--style="float: left;overflow: hidden;width: 80%;margin-top: 0.5%; margin-left: 2%;">-->
+<!--<div class="swiper-wrapper" id="modelStyle-list">-->
+<!--<script type="text/template" id="modelStyleTemplate">-->
+<!--<a href="#" name="style"><%=styleName%></a>-->
+<!--</script>-->
+<!--</div>-->
+<!--</div>-->
+<!--<div class="arrow_right right-style">-->
+<!--<a href="#"><img src="image/arrow_right.png"></a>-->
+<!--</div>-->
+<!--</div>-->
+<!--<div class="search-model">-->
+<!--<div class="search-header"><span class="search-class">部件</span></div>-->
+<!--<div class="arrow_left left-part">-->
+<!--<a href="#"><img src="image/arrow_left.png"></a>-->
+<!--</div>-->
+<!--<div class="swiper-container-part"-->
+<!--style="float: left;overflow: hidden;width: 80%;margin-top: 0.5%; margin-left: 2%;">-->
+<!--<div class="swiper-wrapper" id="part-list">-->
+<!--<script type="text/template" id="partTemplate">-->
+<!--<a href="#" name="part"><%=partName%></a>-->
+<!--</script>-->
+<!--</div>-->
+<!--</div>-->
+<!--<div class="arrow_right right-part">-->
+<!--<a href="#"><img src="image/arrow_right.png"></a>-->
+<!--</div>-->
+<!--</div>-->
+<!--</div>-->
+<!--<div class="search-result">-->
+<!--<div class="result-title">-->
+<!--<span>搜索结果：</span>-->
+
+<!--<div class="level-assortment">-->
+<!--<span>级别筛选</span>-->
+<!--<span id="level-a"><a href="#">A级</a></span>-->
+<!--<span id="level-b"><a href="#">B级</a></span>-->
+<!--<span id="level-c"><a href="#">C级</a></span>-->
+<!--<span id="reset"><img src="image/reset.png" style="width: 23px;"/></span>-->
+<!--</div>-->
+<!--</div>-->
+<!--<div class="img-list" id="accessory-list">-->
+<!--<script type="text/template" id="accessoryTemplate">-->
+<!--<img src="data:image/jpeg;base64,<%=accessoryImg%>">-->
+<!--<span><%=accessoryName%></span><br>-->
+<!--<%if (level == 1) {%>-->
+<!--<span class="level-a">A级</span><br>-->
+<!--<% } %>-->
+<!--<%if (level == 2) {%>-->
+<!--<span class="level-b">B级</span><br>-->
+<!--<% } %>-->
+<!--<%if (level == 3) {%>-->
+<!--<span class="level-c">C级</span><br>-->
+<!--<% } %>-->
+<!--<span>编号：</span><%=accessoryNum%>-->
+<!--</script>-->
+<!--</div>-->
+<!--</div>-->
+<!--</div>-->
+<!--</div>-->
 </body>
 <script type="text/javascript" src="script/constants.js"></script>
 <script type="text/javascript" src="script/model/brand.js"></script>
@@ -319,8 +269,11 @@
         $('.level-b').parent().show();
         $('.level-c').parent().show();
     });
-    $('#login').on('click', function(){
+    $('#login').on('click', function() {
         window.location.href = 'http://115.28.209.203/admin/admin/tologin';
+    });
+    $(function() {
+        $('[data-toggle="popover"]').popover()
     });
 </script>
 </html>

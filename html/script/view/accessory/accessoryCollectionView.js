@@ -12,8 +12,11 @@ var AccessoryCollectionView = Backbone.View.extend({
             url: constants.accessoriesSearch + '?key=奥迪',
             success: function() {
                 view.renderByLucene();
+                $('#alert').hide();
             }
         });
+        this.collection.key = '奥迪';
+        $('#alert').show();
         $('#searchPar').on('input', function() {
             var parStr = $('#searchPar').val();
             console.log(parStr);
@@ -22,11 +25,13 @@ var AccessoryCollectionView = Backbone.View.extend({
                 view.collection.key = parStr;
                 view.collection.getFirstPage({
                     url: constants.accessoriesSearch + '?key=' + parStr,
-                    success: function() {
+                    success: function(data) {
                         $('#accessory-list').empty();
                         view.renderByLucene();
+                        $('#alert').hide();
                     }
                 });
+                $('#alert').show();
             }
         });
         $('#searchAccessory').on('click', function() {

@@ -5,8 +5,8 @@ var AccessoryView = Backbone.View.extend({
     initialize: function(option) {
         this.router = option.router;
     },
-    tagName: 'div',
-    className: 'part-detial',
+    tagName: 'article',
+    className: 'sale-tile col-lg-3 col-md-3 col-sm-6 col-xs-6',
     template: _.template($('#accessoryTemplate').html()),
     events: {
         'click a': 'changeModel',
